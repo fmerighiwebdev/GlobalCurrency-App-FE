@@ -1,0 +1,129 @@
+.validate-address-container h2 {
+    text-align: center;
+    margin: 2rem 0 0 0;
+    color: var(--text-color);
+}
+
+.validate-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 0 0;
+}
+
+.validate-form input {
+    width: min(100%, 500px);
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: none;
+    font-family: "Binace PLEX", sans-serif;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--accent-color-dark);
+}
+
+.validate-form input:focus {
+    outline: none;
+}
+
+.validate-form select {
+    width: min(100%, 500px);
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: none;
+    font-family: "Binace PLEX", sans-serif;
+    border-radius: 5px;
+    background-color: var(--accent-color-dark);
+    color: white;
+}
+
+.validate-form select:focus {
+    outline: none;
+}
+
+.validate-form option {
+    background-color: var(--accent-color);
+    color: white;
+    font-family: "Binace PLEX", sans-serif;
+}
+
+.validate-form button {
+    padding: 1rem 0;
+    margin: 1rem 0 0 0;
+    border: none;
+    font-size: 1.1225rem;
+    font-weight: bold;
+    width: min(300px, 100%);
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: white;
+    font-family: "Binace PLEX", sans-serif;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.validate-form button .spinner-border {
+    width: 20px;
+    height: 20px;
+}
+
+.validate-form button:disabled {
+    background-color: #004a757a;
+}
+
+.result {
+    border: 2px solid red;
+    margin: 5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-block: 2rem;
+    border-radius: 5px;
+    animation: fadeInBounce 1s;
+}
+
+.result img {
+    width: 50px;
+    height: 50px;
+}
+
+.result p span {
+    font-weight: bold;
+}
+
+.result.valid {
+    border-color: green;
+    background-color: rgba(0, 128, 0, 0.3);
+}
+
+.result.not-valid {
+    border-color: red;
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.result p {
+    font-size: 1.125rem;
+    font-family: "Binace PLEX", sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
