@@ -1,0 +1,123 @@
+header {
+    background-color: var(--accent-color);
+    padding: 1rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    width: 60px;
+    height: 60px;
+}
+
+.header-logo h1 {
+    margin: 0 0 0 1rem;
+    color: var(--text-color);
+    font-size: 2.25rem;
+}
+
+.menu-items {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.sub-menu-link {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    cursor: pointer;
+    padding: .05rem .5rem;
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    position: relative;
+}
+
+.sub-menu-link:hover {
+    background-color: white;
+}
+
+.sub-menu-link:hover p {
+    color: var(--accent-color);
+}
+
+.sub-menu-link:hover img {
+    filter: invert(1);
+}
+
+.sub-menu-link p {
+    margin: 0;
+    color: white;
+    font-size: 1rem;
+    transition: all .2s ease-in-out;
+}
+
+.sub-menu-link img {
+    width: 15px;
+    height: 15px;
+    transition: all .2s ease-in-out;
+}
+
+.sub-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    background-color: white;
+    left: 0;
+    border-radius: 5px;
+    padding: 2rem 1rem 1rem 1rem;
+    transition: all .2s ease-in-out;
+    animation: fadeInFromTop .2s ease-in-out;
+}
+
+.sub-menu li a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-size: 1rem;
+    display: block;
+    padding: .25rem 0;
+    transition: all .2s ease-in-out;
+}
+
+.sub-menu li a:hover {
+    text-decoration: underline;
+}
+
+.menu-link a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: all .2s ease-in-out;
+    padding: .25rem .5rem;
+    border-radius: 5px;
+}
+
+.menu-link a:hover {
+    background-color: white;
+    color: var(--accent-color);
+}
+
+@keyframes fadeInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

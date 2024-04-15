@@ -1,0 +1,20 @@
+@import url("https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX");
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #0796C5;
+  --accent-color-dark: #001537;
+  --text-color: #fff;
+  --bg-color: #002045;
+  --accent-color: #004B75;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Binance PLEX', sans-serif;
+}
