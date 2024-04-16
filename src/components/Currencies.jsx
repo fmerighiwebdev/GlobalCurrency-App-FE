@@ -12,7 +12,7 @@ function Currencies() {
   const [isActive, setIsActive] = React.useState("");
 
   const BASE_URL_FIAT = "https://api.currencybeacon.com/v1";
-  const BASE_URL_CRYPTO = "https://api.swapzone.io/v1/exchange/currencies";
+  const BASE_URL_CRYPTO = "https://api.swapzone.io/v1/exchange";
 
   async function getFiatCurrencies() {
     setLoading(true);
@@ -38,7 +38,7 @@ function Currencies() {
 
     try {
       const result = await axios.get(
-        `${BASE_URL_CRYPTO}`, {
+        `${BASE_URL_CRYPTO}/currencies`, {
           headers: {
             "x-api-key": process.env.REACT_APP_API_KEY_CRYPTO
           }

@@ -3,3 +3,138 @@
     margin: 2rem 0 0 0;
     color: var(--text-color);
 }
+
+.convert > .convert-container > p {
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--text-color);
+}
+
+.convert form {
+    margin: 2rem auto 1rem auto;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: min(100%, 800px);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.input-element {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.input-element input {
+    padding: .5rem 0.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    font-family: "Oswald", sans-serif;
+}
+
+.input-element label {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+.input-element input:focus {
+    outline: none;
+}
+
+.select-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+
+.select-element {
+    width: 100%;
+}
+
+.select-element select {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    margin: .5rem 0;
+    font-family: "Oswald", sans-serif;
+    background-color: white;
+}
+
+.select-element select:focus {
+    outline: none;
+}
+
+.select-element select option {
+    font-size: 1rem;
+    font-family: "Oswald", sans-serif;
+}
+
+.select-group label {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.convert form button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: min(100%, 200px);
+    margin: 1rem 0 0 0;
+    transition: all .2s ease-in-out;
+}
+
+.convert form button:hover {
+    background-color: #0067a3;
+}
+
+.convert form button:disabled {
+    background-color: #0067a3;
+    cursor: not-allowed;
+}
+
+.convert .spinner-border {
+    width: 25px;
+    height: 25px;
+}
+
+.rate-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, 800px);
+    margin: 0 auto;
+}
+
+.rate-from, .rate-to, .arrow {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.rate-info span {
+    font-size: 3rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.rate-info p {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}

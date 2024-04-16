@@ -1,0 +1,22 @@
+.hero-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.hero-logo img {
+    width: min(150px, 90%);
+}
+
+.main-crypto-latest {
+    border: 2px solid red;
+    margin-top: 3rem;
+}
+
+.main-crypto-latest h2 {
+    text-align: center;
+    padding-bottom: 1rem;
+    color: var(--text-color);
+    border-bottom: 1px solid white;
+    margin: 0;
+}

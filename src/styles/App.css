@@ -1,4 +1,4 @@
-@import url("https://db.onlinewebfonts.com/c/d05c19ccecf7003d248c60ffd6b5e8f7?family=Binance+PLEX");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 *, *::after, *::before {
   box-sizing: border-box;
@@ -16,5 +16,5 @@
 
 body {
   background-color: var(--bg-color);
-  font-family: 'Binance PLEX', sans-serif;
+  font-family: "Oswald", sans-serif;
 }

@@ -17,7 +17,7 @@
     margin: 1rem 0;
     padding: 0.5rem;
     border: none;
-    font-family: "Binace PLEX", sans-serif;
+    font-family: "Oswald", sans-serif;
     border-radius: 5px;
     color: white;
     background-color: var(--accent-color-dark);
@@ -32,7 +32,7 @@
     margin: 1rem 0;
     padding: 0.5rem;
     border: none;
-    font-family: "Binace PLEX", sans-serif;
+    font-family: "Oswald", sans-serif;
     border-radius: 5px;
     background-color: var(--accent-color-dark);
     color: white;
@@ -45,7 +45,7 @@
 .validate-form option {
     background-color: var(--accent-color);
     color: white;
-    font-family: "Binace PLEX", sans-serif;
+    font-family: "Oswald", sans-serif;
 }
 
 .validate-form button {

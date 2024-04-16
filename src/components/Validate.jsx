@@ -6,7 +6,7 @@ import "../styles/Validate.css";
 import checkIcon from "../images/check.svg";
 import crossIcon from "../images/x.svg";
 
-import CryptoOption from "./CryptoOption";
+import Option from "./Option";
 
 function Validate() {
   const [crypto, setCrypto] = React.useState([]);
@@ -91,7 +91,7 @@ function Validate() {
           />
           <select name="currency" onChange={handleSelect}>
             {sortedCrypto.map((currency, index) => (
-              <CryptoOption currency={currency} key={index} />
+              <Option currency={currency} key={index} type={"crypto"} />
             ))}
           </select>
           <button type="submit" disabled={loading}>
