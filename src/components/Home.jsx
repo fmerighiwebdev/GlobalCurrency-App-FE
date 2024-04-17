@@ -4,25 +4,20 @@ import { Container } from 'react-bootstrap';
 
 import '../styles/Home.css';
 import currencyIcon from '../images/currency-icon.svg';
+import Crypto from './Crypto';
 
 function Home() {
 
   const [cryptoRates, setCryptoRates] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  const BASE_URL = "https://pro-api.coinmarketcap.com";
+  const BASE_URL = "http://localhost:5000";
 
   async function getCryptoRates() {
     try {
-      const result = await axios.get(`${BASE_URL}/v1/cryptocurrency/listings/latest`, {
-        headers: {
-          'X-CMC_PRO_API_KEY': process.env.REACT_APP_API_KEY_COINMARKETCAP,
-        },
-        params: {
-          limit: 5
-        }
-      });
-      console.log(result.data);
+      const result = await axios.get(`${BASE_URL}/api/get-crypto-rates`);
+      setCryptoRates(result.data.data);
+      console.log(result.data.data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -41,14 +36,24 @@ function Home() {
           <img src={currencyIcon} alt="Currency Icon" />
         </div>
         <div className="main-crypto-latest">
+          {loading && (
+            <div className="loading-container">
+              <div className="spinner-grow text-info" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          )}
           <h2>Crypto Rates</h2>
-          <div className="crypto-latest">
-            {/* Crypto rates will be displayed here */}
-          </div>
+          <ul className="crypto-latest">
+            {cryptoRates.length > 0 &&
+              cryptoRates.map((crypto, index) => {
+                return <Crypto key={index} crypto={crypto} />;
+              })}
+          </ul>
         </div>
       </Container>
     </main>
-  )
+  );
 }
 
 export default Home

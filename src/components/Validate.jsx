@@ -16,15 +16,11 @@ function Validate() {
   const [show, setShow] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
-  const BASE_URL_CRYPTO = "https://api.swapzone.io/v1/exchange/currencies";
+  const BASE_URL = "http://localhost:5000";
 
   async function getAllCrypto() {
     try {
-      const result = await axios.get(`${BASE_URL_CRYPTO}`, {
-        headers: {
-          "x-api-key": process.env.REACT_APP_API_KEY_CRYPTO,
-        },
-      });
+      const result = await axios.get(`${BASE_URL}/api/get-crypto-currencies`);
       setCrypto(result.data);
     } catch (err) {
       console.error(err);
@@ -41,19 +37,13 @@ function Validate() {
     setLoading(true);
 
     try {
-      const result = await axios.get(
-        "https://api.swapzone.io/v1/exchange/validate/address",
-        {
-          headers: {
-            "x-api-key": process.env.REACT_APP_API_KEY_CRYPTO,
-          },
-          params: {
-            address,
-            currency,
-          },
-        }
-      );
-      setIsValid(result.data.result);
+      const result = await axios.get(`${BASE_URL}/api/validate-address`, {
+        params: {
+          address,
+          currency,
+        },
+      });
+      setIsValid(result.data);
       setShow(true);
     } catch (err) {
       console.error(err);
@@ -105,9 +95,17 @@ function Validate() {
           </button>
         </form>
         {show && (
-          <div className={isValid ? "result valid" : !isValid ? "result not-valid" : "result"}>
+          <div
+            className={
+              isValid
+                ? "result valid"
+                : !isValid
+                ? "result not-valid"
+                : "result"
+            }
+          >
             <img
-              src={isValid ? checkIcon : !isValid ?  crossIcon : null}
+              src={isValid ? checkIcon : !isValid ? crossIcon : null}
               alt={isValid ? "check" : !isValid ? "cross" : null}
             />
             <p>

@@ -15,16 +15,16 @@ function Convert({ type }) {
   const [rateInfo, setRateInfo] = React.useState({});
   const [loading, setLoading] = React.useState(false);
 
-  const BASE_URL_FIAT = "https://api.currencybeacon.com/v1";
-  const BASE_URL_CRYPTO = "https://api.swapzone.io/v1/exchange";
+  const BASE_URL = "http://localhost:5000";
 
   React.useEffect(() => {
     async function getFiatCurrencies() {
       try {
-        const result = await axios.get(
-          `${BASE_URL_FIAT}/currencies?api_key=${process.env.REACT_APP_API_KEY_FIAT}`,
-          type
-        );
+        const result = await axios.get(`${BASE_URL}/api/get-fiat-currencies`, {
+          params: {
+            type,
+          },
+        });
         setCurrencies(result.data.response);
         console.log(result.data.response);
       } catch (err) {
@@ -34,11 +34,7 @@ function Convert({ type }) {
 
     async function getCryptoCurrencies() {
       try {
-        const result = await axios.get(`${BASE_URL_CRYPTO}/currencies`, {
-          headers: {
-            "x-api-key": process.env.REACT_APP_API_KEY_CRYPTO,
-          },
-        });
+        const result = await axios.get(`${BASE_URL}/api/get-crypto-currencies`);
         setCurrencies(result.data);
         console.log(result.data);
       } catch (err) {
@@ -72,44 +68,20 @@ function Convert({ type }) {
     return currencies.sort((a, b) => (a.name > b.name ? 1 : -1));
   }
 
-  async function convertFiat(event) {
-    event.preventDefault();
-    setLoading(true);
-
-    try {
-      const result = await axios.get(`${BASE_URL_FIAT}/convert`, {
-        params: {
-          api_key: process.env.REACT_APP_API_KEY_FIAT,
-          from: from,
-          to: to,
-          amount: amount,
-        },
-      });
-      console.log(result.data);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }
-
   async function convertCrypto(event) {
     event.preventDefault();
     setLoading(true);
 
     try {
-      const result = await axios.get(`${BASE_URL_CRYPTO}/get-rate`, {
-        headers: {
-          "x-api-key": process.env.REACT_APP_API_KEY_CRYPTO,
-        },
+      const result = await axios.get(`${BASE_URL}/api/convert-crypto`, {
         params: {
           from: from,
           to: to,
           amount: amount,
-          rateType: "all"
+          rateType: "all",
         },
       });
-      console.log(result.data)
+      console.log(result.data);
       setRateInfo(result.data);
     } catch (err) {
       console.error(err);
@@ -129,10 +101,11 @@ function Convert({ type }) {
       <Container className="convert-container">
         <h2>Converti {type === "fiat" ? "FIAT" : "CRYPTO"}</h2>
         <p>
-          Seleziona attentamente la valuta {type === "crypto" ? "e la rete" : null} su cui vuoi eseguire la
+          Seleziona attentamente la valuta{" "}
+          {type === "crypto" ? "e la rete" : null} su cui vuoi eseguire la
           conversione
         </p>
-        <form onSubmit={type === "fiat" ? convertFiat : convertCrypto}>
+        <form onSubmit={type === "fiat" ? null : convertCrypto}>
           <div className="select-group">
             <div className="select-element">
               <label htmlFor="from">DA:</label>

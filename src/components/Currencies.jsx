@@ -11,8 +11,7 @@ function Currencies() {
   const [loading, setLoading] = React.useState(false);
   const [isActive, setIsActive] = React.useState("");
 
-  const BASE_URL_FIAT = "https://api.currencybeacon.com/v1";
-  const BASE_URL_CRYPTO = "https://api.swapzone.io/v1/exchange";
+  const BASE_URL = "http://localhost:5000";
 
   async function getFiatCurrencies() {
     setLoading(true);
@@ -21,8 +20,12 @@ function Currencies() {
 
     try {
       const result = await axios.get(
-        `${BASE_URL_FIAT}/currencies?api_key=${process.env.REACT_APP_API_KEY_FIAT}`,
-        type
+        `${BASE_URL}/api/get-fiat-currencies`,
+        {
+          params: {
+            type,
+          },
+        }
       );
       setCurrencies(result.data.response);
     } catch (err) {
@@ -37,13 +40,7 @@ function Currencies() {
     setIsActive("crypto");
 
     try {
-      const result = await axios.get(
-        `${BASE_URL_CRYPTO}/currencies`, {
-          headers: {
-            "x-api-key": process.env.REACT_APP_API_KEY_CRYPTO
-          }
-        }
-      );
+      const result = await axios.get(`${BASE_URL}/api/get-crypto-currencies`);
       setCurrencies(result.data);
     } catch (err) {
       console.error(err);
@@ -53,7 +50,7 @@ function Currencies() {
   }
 
   function getSortedCurrencies() {
-    return currencies.sort((a, b) => a.name > b.name ? 1 : -1);
+    return currencies.sort((a, b) => (a.name > b.name ? 1 : -1));
   }
 
   const sortedCurrencies = getSortedCurrencies();
