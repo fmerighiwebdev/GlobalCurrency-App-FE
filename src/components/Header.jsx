@@ -36,7 +36,7 @@ function Header() {
               {isActive && (
                 <ul className="sub-menu">
                   <li>
-                    <Link to="/convert-fiat">FIAT</Link>
+                    <Link aria-disabled="true" role="link">FIAT</Link>
                   </li>
                   <li>
                     <Link to="/convert-crypto">CRYPTO</Link>
